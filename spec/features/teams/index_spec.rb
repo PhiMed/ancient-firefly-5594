@@ -30,18 +30,28 @@ RSpec.describe 'the teams index page' do
 
     within("#team-#{team_1.id}") do
       expect(page).to have_content("KAYLEEN UCHINO")
+      expect(page).to have_content("21")
       expect(page).to have_content("BRADY BULIN")
+      expect(page).to have_content("29")
       expect(page).not_to have_content("MALCOLM INGEBRIGTSEN")
+      expect(page).not_to have_content("24")
       expect(page).not_to have_content("FRANCIS ORELL")
+      expect(page).not_to have_content("23")
     end
 
     within("#team-#{team_2.id}") do
       expect(page).not_to have_content("KAYLEEN UCHINO")
+      expect(page).not_to have_content("21")
       expect(page).not_to have_content("BRADY BULIN")
+      expect(page).not_to have_content("29")
       expect(page).to have_content("MALCOLM INGEBRIGTSEN")
+      expect(page).to have_content("24")
       expect(page).to have_content("FRANCIS ORELL")
+      expect(page).to have_content("32")
     end
   end
+
+# extension
 
   it 'displays teams sorted by teams average player age' do
     medium_team = Team.create!(nickname: 'Medium Team', hometown: 'Alto')

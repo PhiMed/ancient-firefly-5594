@@ -23,7 +23,7 @@ RSpec.describe 'the competition show page' do
     expect(page).not_to have_content(other_competition.name)
   end
 
-  it 'lists the competitions team attributes' do
+  it 'lists the competitions teams attributes' do
 
     competition = Competition.create!(name: 'World Cup', location: 'La Paz', sport: 'Cricket')
     team_1 = Team.create!(nickname: 'Rabbits', hometown: 'Toledo')
