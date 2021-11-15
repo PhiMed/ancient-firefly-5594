@@ -82,12 +82,16 @@ RSpec.describe 'the competition show page' do
 
     visit "/competitions/#{competition.id}"
 
+    expect(page).to have_content(team_1.nickname)
+    expect(page).to have_content(team_2.nickname)
     expect(page).not_to have_content(team_3.nickname)
 
     fill_in('Nickname', with: 'Squids')
     click_button('Register')
 
     expect(current_path).to eq("/competitions/#{competition.id}")
+    expect(page).to have_content(team_1.nickname)
+    expect(page).to have_content(team_2.nickname)
     expect(page).to have_content(team_3.nickname)
 
   end
