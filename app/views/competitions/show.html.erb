@@ -1,0 +1,13 @@
+<h1>Competition Show Page</h1>
+
+<h3>Competition Name: <%= @competition.name  %></h3>
+<p>Sport: <%= @competition.sport %></p>
+<p>Location: <%= @competition.location %></p>
+<p>Average Player Age: <%= @competition.average_player_age %></p>
+<p>Teams in this competition:</p>
+<% @competition.teams.each do |team| %>
+  <div id="team-<%= team.id %>">
+  <h3><%= "Team:  #{team.nickname}"  %></h3>
+  <%= "Hometown:  #{team.hometown}"  %>
+  </div>
+<% end %>

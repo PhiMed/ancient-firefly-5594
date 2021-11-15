@@ -5,7 +5,7 @@ RSpec.describe 'the competition show page' do
   it 'lists the competition attributes' do
 
     competition = Competition.create!(name: 'World Cup', location: 'La Paz', sport: 'cricket')
-    other_competion = Competition.create!(name: 'Field Day', location: 'Reno', sport: 'polo')
+    other_competition = Competition.create!(name: 'Field Day', location: 'Reno', sport: 'polo')
     team_1 = Team.create!(nickname: 'Rabbits', hometown: 'Toledo')
     player_1 = team_1.players.create!(name: "KAYLEEN UCHINO", age: 21)
     player_2 = team_1.players.create!(name: "BRADY BULIN", age: 29)
@@ -35,9 +35,9 @@ RSpec.describe 'the competition show page' do
     CompetitionTeam.create(team_id: team_1.id, competition_id: competition.id)
     CompetitionTeam.create(team_id: team_2.id, competition_id: competition.id)
 
-    other_competion = Competition.create!(name: 'Field Day', location: 'Reno', sport: 'polo')
+    other_competition = Competition.create!(name: 'Field Day', location: 'Reno', sport: 'polo')
     other_team = Team.create!(nickname: 'Astros', hometown: 'Houston')
-    CompetitionTeam.create(team_id: other_team.id, competition_id: other_competion.id)
+    CompetitionTeam.create(team_id: other_team.id, competition_id: other_competition.id)
 
     visit "/competitions/#{competition.id}"
 
@@ -47,18 +47,18 @@ RSpec.describe 'the competition show page' do
     expect(page).to have_content("Hometown: #{team_2.hometown}")
 
     expect(page).not_to have_content(other_competition.name)
-    expect(page).not_to have_content(other_team.name)
+    expect(page).not_to have_content(other_team.nickname)
   end
 
   it 'lists the average age of all players in this competition' do
 
     competition = Competition.create!(name: 'World Cup', location: 'La Paz', sport: 'cricket')
     team_1 = Team.create!(nickname: 'Rabbits', hometown: 'Toledo')
-    player_1 = team_1.players.create!(name: "KAYLEEN UCHINO", age: 21)
-    player_2 = team_1.players.create!(name: "BRADY BULIN", age: 29)
+    player_1 = team_1.players.create!(name: "KAYLEEN UCHINO", age: 20)
+    player_2 = team_1.players.create!(name: "BRADY BULIN", age: 30)
     team_2 = Team.create!(nickname: 'Weasels', hometown: 'Alto')
-    player_3 = team_2.players.create!(name: "MALCOLM INGEBRIGTSEN", age: 24)
-    player_4 = team_2.players.create!(name: "FRANCIS ORELL", age: 32)
+    player_3 = team_2.players.create!(name: "MALCOLM INGEBRIGTSEN", age: 40)
+    player_4 = team_2.players.create!(name: "FRANCIS ORELL", age: 50)
     CompetitionTeam.create(team_id: team_1.id, competition_id: competition.id)
     CompetitionTeam.create(team_id: team_2.id, competition_id: competition.id)
 
