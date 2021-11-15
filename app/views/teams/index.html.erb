@@ -1,0 +1,13 @@
+<h1>Teams Index</h1>
+<% @teams.each do |team| %>
+  <div id="team-<%= team.id %>">
+  <h3><%= "Team:  #{team.nickname}"  %></h3>
+  <%= "Hometown:  #{team.hometown}"  %>
+  <br>
+  <h3>Players:</h3>
+  <% team.players.each do |player|  %>
+    Name: <%= player.name  %><br>
+    Age: <%= player.age  %><br>
+  <% end %>
+</div>
+<% end %>

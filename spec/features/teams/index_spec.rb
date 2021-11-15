@@ -3,18 +3,18 @@ require 'rails_helper'
 RSpec.describe 'the teams index page' do
 
   it 'lists the names and hometowns of all teams' do
-    team_1 = Team.create!(name: 'Rabbits', hometown: 'Toledo', sport: 'soccer')
+    team_1 = Team.create!(nickname: 'Rabbits', hometown: 'Toledo', sport: 'soccer')
     player_1 = team_1.players.create!(name: "KAYLEEN UCHINO", age: 21)
     player_2 = team_1.players.create!(name: "BRADY BULIN", age: 29)
-    team_2 = Team.create!(name: 'Weasels', hometown: 'Alto', sport: 'basketball')
+    team_2 = Team.create!(nickname: 'Weasels', hometown: 'Alto', sport: 'basketball')
     player_3 = team_2.players.create!(name: "MALCOLM INGEBRIGTSEN", age: 24)
     player_4 = team_2.players.create!(name: "FRANCIS ORELL", age: 32)
 
     visit '/teams'
 
-    expect(page).to have_content("Team: #{team_1.name}")
+    expect(page).to have_content("Team: #{team_1.nickname}")
     expect(page).to have_content("Hometown: #{team_1.hometown}")
-    expect(page).to have_content("Team: #{team_2.name}")
+    expect(page).to have_content("Team: #{team_2.nickname}")
     expect(page).to have_content("Hometown: #{team_2.hometown}")
   end
 
