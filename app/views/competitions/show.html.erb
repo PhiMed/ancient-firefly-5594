@@ -4,6 +4,14 @@
 <p>Sport: <%= @competition.sport %></p>
 <p>Location: <%= @competition.location %></p>
 <p>Average Player Age: <%= @competition.average_player_age %></p>
+
+<h3>Register a team:</h3>
+<%= form_with url: "/competitions/#{@competition.id}/teams", method: :post, local: true do |form| %>
+  <%= form.label :nickname %>
+  <%= form.text_field :nickname, required: true%>
+  <%= form.submit "Register" %>
+  <% end %>
+
 <p>Teams in this competition:</p>
 <% @competition.teams.each do |team| %>
   <div id="team-<%= team.id %>">

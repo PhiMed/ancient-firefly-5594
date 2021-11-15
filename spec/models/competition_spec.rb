@@ -25,7 +25,6 @@ RSpec.describe Competition do
 
     expect(competition.average_player_age).to eq(35)
     expect(other_competition.average_player_age).to eq(1000)
-
   end
 
 end
